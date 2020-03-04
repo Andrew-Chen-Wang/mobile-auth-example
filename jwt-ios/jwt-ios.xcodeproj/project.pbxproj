@@ -12,6 +12,30 @@
 		EC52AA38240D9D4E001E14AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC52AA36240D9D4E001E14AF /* LaunchScreen.storyboard */; };
 		EC52AA40240DA4BE001E14AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA3F240DA4BE001E14AF /* ViewController.swift */; };
 		EC52AA42240DA4EE001E14AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA41240DA4EE001E14AF /* LoginViewController.swift */; };
+		EC52AA49240DC8A2001E14AF /* JSONParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA48240DC8A2001E14AF /* JSONParameterEncoding.swift */; };
+		EC52AA4B240DC8AB001E14AF /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA4A240DC8AB001E14AF /* ParameterEncoding.swift */; };
+		EC52AA4D240DC8B8001E14AF /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA4C240DC8B8001E14AF /* URLParameterEncoding.swift */; };
+		EC52AA4F240DC935001E14AF /* MovieNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA4E240DC935001E14AF /* MovieNetworkManager.swift */; };
+		EC52AA51240DC95F001E14AF /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA50240DC95F001E14AF /* EndpointType.swift */; };
+		EC52AA53240DC971001E14AF /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA52240DC971001E14AF /* HTTPMethod.swift */; };
+		EC52AA55240DC980001E14AF /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA54240DC980001E14AF /* HTTPTask.swift */; };
+		EC52AA57240DC99E001E14AF /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA56240DC99E001E14AF /* NetworkLogger.swift */; };
+		EC52AA59240DC9AF001E14AF /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA58240DC9AF001E14AF /* NetworkRouter.swift */; };
+		EC52AA5B240DC9C9001E14AF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA5A240DC9C9001E14AF /* Router.swift */; };
+		EC52AA5D240DCB81001E14AF /* MovieEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA5C240DCB81001E14AF /* MovieEndpoint.swift */; };
+		EC52AA60240DCC17001E14AF /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA5F240DCC17001E14AF /* MovieModel.swift */; };
+		EC52AA62240E04CD001E14AF /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA61240E04CD001E14AF /* AuthEndpoint.swift */; };
+		EC52AA66240E12C1001E14AF /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA65240E12C1001E14AF /* Authentication.swift */; };
+		EC52AA68240E1570001E14AF /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA67240E1570001E14AF /* KeychainWrapper.swift */; };
+		EC52AA6A240E1596001E14AF /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA69240E1596001E14AF /* KeychainItemAccessibility.swift */; };
+		EC52AA6C240EEE35001E14AF /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA6B240EEE35001E14AF /* NetworkResponse.swift */; };
+		EC52AA6E240EEEDA001E14AF /* AuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA6D240EEEDA001E14AF /* AuthNetworkManager.swift */; };
+		EC52AA70240EF2F5001E14AF /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA6F240EF2F5001E14AF /* AuthModel.swift */; };
+		EC52AA73240EFE2E001E14AF /* RegularEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA72240EFE2E001E14AF /* RegularEndpoint.swift */; };
+		EC52AA77240F3D50001E14AF /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA76240F3D50001E14AF /* NetworkEnvironment.swift */; };
+		EC52AA79240F3E6F001E14AF /* RegularModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA78240F3E6F001E14AF /* RegularModel.swift */; };
+		EC52AA7B240F47EF001E14AF /* QuickAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA7A240F47EF001E14AF /* QuickAuthentication.swift */; };
+		EC52AA7D240F4CB2001E14AF /* RegularNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA7C240F4CB2001E14AF /* RegularNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +46,30 @@
 		EC52AA39240D9D4E001E14AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC52AA3F240DA4BE001E14AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EC52AA41240DA4EE001E14AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EC52AA48240DC8A2001E14AF /* JSONParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoding.swift; sourceTree = "<group>"; };
+		EC52AA4A240DC8AB001E14AF /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		EC52AA4C240DC8B8001E14AF /* URLParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoding.swift; sourceTree = "<group>"; };
+		EC52AA4E240DC935001E14AF /* MovieNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNetworkManager.swift; sourceTree = "<group>"; };
+		EC52AA50240DC95F001E14AF /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
+		EC52AA52240DC971001E14AF /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		EC52AA54240DC980001E14AF /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		EC52AA56240DC99E001E14AF /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		EC52AA58240DC9AF001E14AF /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		EC52AA5A240DC9C9001E14AF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		EC52AA5C240DCB81001E14AF /* MovieEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEndpoint.swift; sourceTree = "<group>"; };
+		EC52AA5F240DCC17001E14AF /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		EC52AA61240E04CD001E14AF /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
+		EC52AA65240E12C1001E14AF /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		EC52AA67240E1570001E14AF /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		EC52AA69240E1596001E14AF /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		EC52AA6B240EEE35001E14AF /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		EC52AA6D240EEEDA001E14AF /* AuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworkManager.swift; sourceTree = "<group>"; };
+		EC52AA6F240EF2F5001E14AF /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		EC52AA72240EFE2E001E14AF /* RegularEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularEndpoint.swift; sourceTree = "<group>"; };
+		EC52AA76240F3D50001E14AF /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
+		EC52AA78240F3E6F001E14AF /* RegularModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularModel.swift; sourceTree = "<group>"; };
+		EC52AA7A240F47EF001E14AF /* QuickAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAuthentication.swift; sourceTree = "<group>"; };
+		EC52AA7C240F4CB2001E14AF /* RegularNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +103,93 @@
 			isa = PBXGroup;
 			children = (
 				EC52AA2B240D9D4B001E14AF /* AppDelegate.swift */,
-				EC52AA3F240DA4BE001E14AF /* ViewController.swift */,
 				EC52AA41240DA4EE001E14AF /* LoginViewController.swift */,
+				EC52AA3F240DA4BE001E14AF /* ViewController.swift */,
+				EC52AA7A240F47EF001E14AF /* QuickAuthentication.swift */,
+				EC52AA71240EF372001E14AF /* Authentication */,
+				EC52AA5E240DCC0E001E14AF /* Model */,
+				EC52AA43240DC80D001E14AF /* Networking */,
 				EC52AA31240D9D4E001E14AF /* Assets.xcassets */,
 				EC52AA36240D9D4E001E14AF /* LaunchScreen.storyboard */,
 				EC52AA39240D9D4E001E14AF /* Info.plist */,
 			);
 			path = "jwt-ios";
+			sourceTree = "<group>";
+		};
+		EC52AA43240DC80D001E14AF /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EC52AA47240DC881001E14AF /* Service */,
+				EC52AA46240DC87A001E14AF /* Manager */,
+				EC52AA45240DC870001E14AF /* Endpoint */,
+				EC52AA44240DC868001E14AF /* Encoding */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		EC52AA44240DC868001E14AF /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				EC52AA48240DC8A2001E14AF /* JSONParameterEncoding.swift */,
+				EC52AA4A240DC8AB001E14AF /* ParameterEncoding.swift */,
+				EC52AA4C240DC8B8001E14AF /* URLParameterEncoding.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		EC52AA45240DC870001E14AF /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				EC52AA76240F3D50001E14AF /* NetworkEnvironment.swift */,
+				EC52AA61240E04CD001E14AF /* AuthEndpoint.swift */,
+				EC52AA72240EFE2E001E14AF /* RegularEndpoint.swift */,
+				EC52AA5C240DCB81001E14AF /* MovieEndpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		EC52AA46240DC87A001E14AF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EC52AA6B240EEE35001E14AF /* NetworkResponse.swift */,
+				EC52AA6D240EEEDA001E14AF /* AuthNetworkManager.swift */,
+				EC52AA7C240F4CB2001E14AF /* RegularNetworkManager.swift */,
+				EC52AA4E240DC935001E14AF /* MovieNetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		EC52AA47240DC881001E14AF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EC52AA50240DC95F001E14AF /* EndpointType.swift */,
+				EC52AA52240DC971001E14AF /* HTTPMethod.swift */,
+				EC52AA54240DC980001E14AF /* HTTPTask.swift */,
+				EC52AA56240DC99E001E14AF /* NetworkLogger.swift */,
+				EC52AA58240DC9AF001E14AF /* NetworkRouter.swift */,
+				EC52AA5A240DC9C9001E14AF /* Router.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EC52AA5E240DCC0E001E14AF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC52AA6F240EF2F5001E14AF /* AuthModel.swift */,
+				EC52AA78240F3E6F001E14AF /* RegularModel.swift */,
+				EC52AA5F240DCC17001E14AF /* MovieModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EC52AA71240EF372001E14AF /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				EC52AA65240E12C1001E14AF /* Authentication.swift */,
+				EC52AA67240E1570001E14AF /* KeychainWrapper.swift */,
+				EC52AA69240E1596001E14AF /* KeychainItemAccessibility.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +262,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC52AA73240EFE2E001E14AF /* RegularEndpoint.swift in Sources */,
+				EC52AA51240DC95F001E14AF /* EndpointType.swift in Sources */,
+				EC52AA79240F3E6F001E14AF /* RegularModel.swift in Sources */,
+				EC52AA5D240DCB81001E14AF /* MovieEndpoint.swift in Sources */,
+				EC52AA77240F3D50001E14AF /* NetworkEnvironment.swift in Sources */,
+				EC52AA7D240F4CB2001E14AF /* RegularNetworkManager.swift in Sources */,
+				EC52AA6C240EEE35001E14AF /* NetworkResponse.swift in Sources */,
+				EC52AA59240DC9AF001E14AF /* NetworkRouter.swift in Sources */,
+				EC52AA62240E04CD001E14AF /* AuthEndpoint.swift in Sources */,
+				EC52AA49240DC8A2001E14AF /* JSONParameterEncoding.swift in Sources */,
 				EC52AA42240DA4EE001E14AF /* LoginViewController.swift in Sources */,
+				EC52AA4B240DC8AB001E14AF /* ParameterEncoding.swift in Sources */,
+				EC52AA4F240DC935001E14AF /* MovieNetworkManager.swift in Sources */,
+				EC52AA68240E1570001E14AF /* KeychainWrapper.swift in Sources */,
+				EC52AA53240DC971001E14AF /* HTTPMethod.swift in Sources */,
+				EC52AA55240DC980001E14AF /* HTTPTask.swift in Sources */,
+				EC52AA7B240F47EF001E14AF /* QuickAuthentication.swift in Sources */,
 				EC52AA40240DA4BE001E14AF /* ViewController.swift in Sources */,
+				EC52AA4D240DC8B8001E14AF /* URLParameterEncoding.swift in Sources */,
+				EC52AA6A240E1596001E14AF /* KeychainItemAccessibility.swift in Sources */,
 				EC52AA2C240D9D4B001E14AF /* AppDelegate.swift in Sources */,
+				EC52AA57240DC99E001E14AF /* NetworkLogger.swift in Sources */,
+				EC52AA5B240DC9C9001E14AF /* Router.swift in Sources */,
+				EC52AA60240DCC17001E14AF /* MovieModel.swift in Sources */,
+				EC52AA70240EF2F5001E14AF /* AuthModel.swift in Sources */,
+				EC52AA66240E12C1001E14AF /* Authentication.swift in Sources */,
+				EC52AA6E240EEEDA001E14AF /* AuthNetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

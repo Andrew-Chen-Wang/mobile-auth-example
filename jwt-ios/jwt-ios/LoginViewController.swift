@@ -9,9 +9,64 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    let usernameField = UITextField()
+    let passwordField = UITextField()
+    let submitButton = UIButton()
+    
+    var networkManager: AuthNetworkManager!
+    init(networkManager: AuthNetworkManager) {
+        super.init(nibName: nil, bundle: nil)
+        self.networkManager = networkManager
+    }
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        usernameField.translatesAutoresizingMaskIntoConstraints = false
+        usernameField.placeholder = "Username"
+        usernameField.borderStyle = .roundedRect
+        passwordField.translatesAutoresizingMaskIntoConstraints = false
+        passwordField.placeholder = "Password"
+        usernameField.borderStyle = .roundedRect
+        passwordField.isSecureTextEntry = true
 
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.setTitle("Login", for: .normal)
+        submitButton.backgroundColor = .systemGreen
+        submitButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        submitButton.tintColor = .white
+        
+        view.addSubview(usernameField)
+        view.addSubview(passwordField)
+        view.addSubview(submitButton)
+        
+        view.layoutMargins = .init(top: 10, left: 20, bottom: 30, right: 20)
+        let lg = view.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            usernameField.topAnchor.constraint(equalTo: lg.topAnchor),
+            usernameField.leadingAnchor.constraint(equalTo: lg.leadingAnchor),
+            usernameField.trailingAnchor.constraint(equalTo: lg.trailingAnchor),
+            
+            passwordField.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 20),
+            passwordField.leadingAnchor.constraint(equalTo: lg.leadingAnchor),
+            passwordField.trailingAnchor.constraint(equalTo: lg.trailingAnchor),
+            
+            submitButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 40),
+            submitButton.leadingAnchor.constraint(equalTo: lg.leadingAnchor),
+            submitButton.trailingAnchor.constraint(equalTo: lg.trailingAnchor),
+            submitButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+    }
+    
+    @objc func login(sender: UIButton!) {
+        networkManager.both() { response, error in
+            if let error = error {
+                print(error)
+            } else {
+                self.navigationController?.pushViewController(ViewController(networkManager: RegularNetworkManager()), animated: true)
+            }
+        }
     }
 }
