@@ -27,18 +27,18 @@ extension AuthAPI: EndPointType {
     }
     
     var baseURL: URL {
-        guard let url = URL(string: "http://127.0.0.1/") else { fatalError("baseURL could not be configured.") }
+        guard let url = URL(string: "http://127.0.0.1:8000/") else { fatalError("baseURL could not be configured.") }
         return url
     }
     
     var path: String {
         switch self {
         case .register:
-            return "api/accounts/register"
+            return "api/accounts/register/"
         case .access:
-            return "api/token/access"
+            return "api/token/access/"
         case .both:
-            return "api/token/both"
+            return "api/token/both/"
         }
     }
     
@@ -51,7 +51,7 @@ extension AuthAPI: EndPointType {
                     "email": email,
                     "password": password
                 ],
-                bodyEncoding: .urlEncoding,
+                bodyEncoding: .jsonEncoding,
                 urlParameters: nil
             )
         case .access:
@@ -59,7 +59,7 @@ extension AuthAPI: EndPointType {
                 bodyParameters: [
                     "refresh": getAuthToken(.refresh)
                 ],
-                bodyEncoding: .urlEncoding,
+                bodyEncoding: .jsonEncoding,
                 urlParameters: nil
             )
         case .both:
@@ -69,7 +69,7 @@ extension AuthAPI: EndPointType {
                     "username": user ?? "",
                     "password": pw ?? ""
                 ],
-                bodyEncoding: .urlEncoding,
+                bodyEncoding: .jsonEncoding,
                 urlParameters: nil
             )
 //        default:

@@ -36,7 +36,7 @@ extension RegularAPI: EndPointType {
     }
     
     var baseURL: URL {
-        guard let url = URL(string: "http://127.0.0.1/") else { fatalError("baseURL could not be configured.") }
+        guard let url = URL(string: "http://127.0.0.1:8000/") else { fatalError("baseURL could not be configured.") }
         return url
     }
     

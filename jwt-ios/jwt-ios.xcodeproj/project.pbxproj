@@ -130,8 +130,8 @@
 		EC52AA44240DC868001E14AF /* Encoding */ = {
 			isa = PBXGroup;
 			children = (
-				EC52AA48240DC8A2001E14AF /* JSONParameterEncoding.swift */,
 				EC52AA4A240DC8AB001E14AF /* ParameterEncoding.swift */,
+				EC52AA48240DC8A2001E14AF /* JSONParameterEncoding.swift */,
 				EC52AA4C240DC8B8001E14AF /* URLParameterEncoding.swift */,
 			);
 			path = Encoding;

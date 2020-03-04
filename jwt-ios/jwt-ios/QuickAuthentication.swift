@@ -8,6 +8,13 @@
 
 import UIKit
 
+/*
+ https://stackoverflow.com/questions/48707059/login-sign-up-via-uialertcontroller
+ DispatchQueue.main.async {
+    self.present(alertController, animated: true, completion: nil)
+}
+ */
+
 class QuickAuthenticationController: UIAlertController {
     var networkManager: AuthNetworkManager!
     init(networkManager: AuthNetworkManager) {
@@ -49,6 +56,8 @@ class QuickAuthenticationController: UIAlertController {
                     } else {
                         self.quickAuthenticate(retryCount + 1)
                     }
+                } else {
+                    self.dismiss(animated: true)
                 }
             })
         }

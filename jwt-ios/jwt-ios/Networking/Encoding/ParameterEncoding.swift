@@ -38,9 +38,8 @@ public enum ParameterEncoding {
                     let urlParameters = urlParameters else { return }
                 try URLParameterEncoder().encode(urlRequest: &urlRequest, with: urlParameters)
                 try JSONParameterEncoder().encode(urlRequest: &urlRequest, with: bodyParameters)
-                
             }
-        }catch {
+        } catch {
             throw error
         }
     }

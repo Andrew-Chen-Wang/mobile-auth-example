@@ -27,10 +27,15 @@ class LoginViewController: UIViewController {
         usernameField.translatesAutoresizingMaskIntoConstraints = false
         usernameField.placeholder = "Username"
         usernameField.borderStyle = .roundedRect
+        usernameField.textContentType = .username
+        usernameField.autocorrectionType = .no
+        usernameField.autocapitalizationType = .none
         passwordField.translatesAutoresizingMaskIntoConstraints = false
         passwordField.placeholder = "Password"
-        usernameField.borderStyle = .roundedRect
+        passwordField.borderStyle = .roundedRect
         passwordField.isSecureTextEntry = true
+        passwordField.autocorrectionType = .no
+        passwordField.autocapitalizationType = .none
 
         submitButton.translatesAutoresizingMaskIntoConstraints = false
         submitButton.setTitle("Login", for: .normal)
@@ -61,11 +66,14 @@ class LoginViewController: UIViewController {
     }
     
     @objc func login(sender: UIButton!) {
+        saveUserCredentials(username: usernameField.text ?? "", password: passwordField.text ?? "")
         networkManager.both() { response, error in
             if let error = error {
                 print(error)
             } else {
-                self.navigationController?.pushViewController(ViewController(networkManager: RegularNetworkManager()), animated: true)
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(ViewController(networkManager: RegularNetworkManager()), animated: true)
+                }
             }
         }
     }
