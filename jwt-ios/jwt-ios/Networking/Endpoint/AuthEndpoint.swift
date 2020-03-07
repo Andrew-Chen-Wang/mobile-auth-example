@@ -13,32 +13,61 @@ public enum AuthAPI {
     // We don't need password listed twice. Pw validation should happen client side unless you want to be lazy like me and use NotificationBannerSwift and show the errors as strings there
     case register(username: String, email: String, password: String)
     case access
-    case both  // This is essentially logging in since simpletjwt automatically checks for authentication https://github.com/davesque/django-rest-framework-simplejwt/blob/master/rest_framework_simplejwt/serializers.py#L33
+    case both  // This is essentially logging in since simplejwt automatically checks for authentication https://github.com/davesque/django-rest-framework-simplejwt/blob/master/rest_framework_simplejwt/serializers.py#L33. Returns 401 code if incorrect credentials
+    
+    // Other API stuff
+    case ping(id: Int)
+    case whatever
 }
 
 extension AuthAPI: EndPointType {
-    var httpMethod: HTTPMethod {
-        return .post
-    }
-    
-    var headers: HTTPHeaders? {
-        // Check out IMPORTANT note in RegularEndpoint.swift
-        return nil
+    var environmentBaseURL : String {
+        switch AuthNetworkManager.environment {
+        case .local: return "http://127.0.0.1:8000/api/"
+        // Return your actual domain
+        case .staging: return "https://staging.themoviedb.org/3/movie/"
+        case .production: return "https://api.themoviedb.org/3/movie/"
+        }
     }
     
     var baseURL: URL {
-        guard let url = URL(string: "http://127.0.0.1:8000/") else { fatalError("baseURL could not be configured.") }
+        guard let url = URL(string: environmentBaseURL) else { fatalError("baseURL could not be configured.") }
         return url
     }
     
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .register, .access, .both:
+            return .post
+        default:
+            return .get
+        }
+    }
+    
+    var headers: HTTPHeaders? {
+        switch self {
+        case .register, .access, .both:
+            // Authentication does not need Bearer token for authentication
+            return nil
+        default:
+            print("HEY! GASDKHILUFBKHUILBJDKGVBJDGVBUKYABWDWAFBKJHB")
+            return ["Authorization": "Bearer \(getAuthToken(.access))"]
+        }
+    }
+    
     var path: String {
+        // The path for api/ is already in baseURL
         switch self {
         case .register:
-            return "api/accounts/register/"
+            return "accounts/register/"
         case .access:
-            return "api/token/access/"
+            return "token/access/"
         case .both:
-            return "api/token/both/"
+            return "token/both/"
+        case .ping:
+            return "ping/"
+        case .whatever:
+            return "whatever/"
         }
     }
     
@@ -72,8 +101,16 @@ extension AuthAPI: EndPointType {
                 bodyEncoding: .jsonEncoding,
                 urlParameters: nil
             )
-//        default:
-//            return .request
+        case .ping(let id):
+            return .requestParametersAndHeaders(
+                bodyParameters: nil,
+                bodyEncoding: .urlEncoding,
+                urlParameters: [
+                    "id": id
+                ], additionHeaders: ["Authorization": "Bearer \(getAuthToken(.access))"]
+            )
+        default:
+            return .request
         }
     }
 }

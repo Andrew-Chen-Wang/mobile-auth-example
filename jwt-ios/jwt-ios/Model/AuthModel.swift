@@ -9,20 +9,23 @@
 import Foundation
 
 struct AuthApiResponse {
-    let access: String
-    let refresh: String
+    let access: String?
+    let refresh: String?
+    let id: Int? // Part of the ping path; server returns some random id
 }
 
 extension AuthApiResponse: Decodable {
     private enum AuthApiResponseCodingKeys: String, CodingKey {
         case access
         case refresh
+        case id
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AuthApiResponseCodingKeys.self)
         
-        access = try container.decode(String.self, forKey: .access)
-        refresh = try container.decode(String.self, forKey: .refresh)
+        access = try? container.decodeIfPresent(String.self, forKey: .access)
+        refresh = try? container.decodeIfPresent(String.self, forKey: .refresh)
+        id = try? container.decodeIfPresent(Int.self, forKey: .id)
     }
 }

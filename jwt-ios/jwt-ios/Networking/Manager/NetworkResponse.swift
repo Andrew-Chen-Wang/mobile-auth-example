@@ -25,7 +25,6 @@ enum Result<String> {
 }
 
 func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
-    print(response.statusCode)
     switch response.statusCode {
     case 200...299: return .success
     case 401: return .failure(NetworkResponse.authenticationError.rawValue)

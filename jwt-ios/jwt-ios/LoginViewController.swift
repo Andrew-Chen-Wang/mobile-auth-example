@@ -72,7 +72,8 @@ class LoginViewController: UIViewController {
                 print(error)
             } else {
                 DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(ViewController(networkManager: RegularNetworkManager()), animated: true)
+                    // Pass the network manager so that we don't keep instantiating it.
+                    self.navigationController?.pushViewController(ViewController(networkManager: self.networkManager), animated: true)
                 }
             }
         }

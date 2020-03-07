@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: User Credentials
+// I actually usually use KeychainAccess https://github.com/kishikawakatsumi/KeychainAccess/ for larger apps
 
 /// THIS FUNCTIONALITY IS FOR TESTING PURPOSES, and it SHOULD NOT BE USED in production. Use shared web credentials.
 func saveUserCredentials(username: String, password: String) {
@@ -22,7 +23,7 @@ func getUserCredentials() -> (String?, String?) {
 }
 
 func deleteUserCredentials() {
-    KeychainWrapper.standard.removeAllKeys()
+    let _ = KeychainWrapper.standard.removeAllKeys()
 }
 
 // MARK: Auth tokens
