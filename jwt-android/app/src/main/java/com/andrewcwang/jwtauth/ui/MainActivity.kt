@@ -14,7 +14,7 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private val service = AuthService.create()
-    var currentUser: String? = null
+    var currentUser: Account? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,12 +41,12 @@ class MainActivity : AppCompatActivity() {
         val postRequest = service.login(credentials = body)
         Log.v("Request", "request sent")
         if (postRequest.isSuccessful) {
-            Log.v("Request", "HOPEFULLY")
             val (access, refresh) = postRequest.body()!!
             am.setAuthToken(account, "access", access)
             am.setAuthToken(account, "refresh", refresh)
             Log.v("Access", access)
             Log.v("Refresh", refresh)
+            currentUser = account
             return true
         } else if (postRequest.code() == 401) {
             Toast.makeText(this@MainActivity, "Invalid username or password.", Toast.LENGTH_LONG).show()

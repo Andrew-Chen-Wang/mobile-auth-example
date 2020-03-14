@@ -5,4 +5,5 @@
     <string name="password">Password</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="initial_ping">Pings: 0</string>
 </resources>

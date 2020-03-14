@@ -14,6 +14,9 @@
         android:maxSdkVersion="22" />
     <!-- Just remember that your domain should be https later on.
      I only have this here since we're doing local testing-->
+    <uses-permission
+        android:name="android.permission.USE_CREDENTIALS"
+        android:maxSdkVersion="22" />
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

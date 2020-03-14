@@ -1,5 +1,6 @@
 package com.andrewcwang.jwtauth.networking
 
+import android.content.Context
 import com.andrewcwang.jwtauth.models.body.Login
 import com.andrewcwang.jwtauth.models.body.RefreshToken
 import com.andrewcwang.jwtauth.models.response.AccessToken
@@ -52,7 +53,7 @@ interface AuthService {
 
     // This is apparently a singleton in Kotlin
     companion object {
-        fun create(): AuthService {
+        fun create(context: Context): AuthService {
             val baseUrl = "http://192.168.0.8:8000/"
 
             // Extra Logging - Warning: Will erase your HeaderInterceptor which is NOT good
@@ -62,6 +63,7 @@ interface AuthService {
             val client = OkHttpClient().newBuilder()
                     .addInterceptor(loggingInterceptor)
                     .addInterceptor(HeaderInterceptor())
+                    .addInterceptor(TokenInterceptor(context))
                     .build()
 
             // Create the service

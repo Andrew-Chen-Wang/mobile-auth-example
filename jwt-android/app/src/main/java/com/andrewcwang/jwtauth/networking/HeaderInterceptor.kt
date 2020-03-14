@@ -1,8 +1,6 @@
 package com.andrewcwang.jwtauth.networking
 
-import android.accounts.AccountManager
 import android.annotation.SuppressLint
-import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -10,9 +8,9 @@ import okhttp3.internal.http2.Http2Reader
 import java.io.IOException
 
 internal class HeaderInterceptor : Interceptor {
-    val DEBUG = true
+    private val DEBUG = true
     // Remember, both and access use post requests to get tokens
-    val unauthenticatedURLs: List<String> = listOf("both", "access", "register")
+    private val unauthenticatedURLs: List<String> = listOf("both", "access", "register")
 
     @SuppressLint("DefaultLocale")
     @Throws(IOException::class)

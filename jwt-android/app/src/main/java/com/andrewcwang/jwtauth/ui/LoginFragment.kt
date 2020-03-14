@@ -24,10 +24,8 @@ class LoginFragment: Fragment() {
         root = inflater.inflate(R.layout.fragment_login, container, false)
         val loginButton = root.findViewById<Button>(R.id.login_button)
         loginButton.setOnClickListener {
-            Log.v("Test", "TESTINGINGINGINGINGIN")
             lifecycleScope.launch { login() }  // https://stackoverflow.com/a/57174689
         }
-        Log.v("LoginFrag", "Beginning Login")
         return root
     }
 
@@ -38,7 +36,6 @@ class LoginFragment: Fragment() {
     }
 
     private suspend fun login() {
-        Log.v("LoginFrag", "WASD")
         val username = root.findViewById<EditText>(R.id.login_username)
         val password = root.findViewById<EditText>(R.id.login_password)
         Toast.makeText(context, "Username: " + username.text, Toast.LENGTH_SHORT).show()
