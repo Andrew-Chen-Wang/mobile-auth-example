@@ -6,7 +6,7 @@ Created: 2 March 2020
 
 This application contains the Django server running with DRF and SimpleJWT in order to demonstrate how apps should communicate with JWT (an access and refresh token).
 
-Detailed in each application is what I've done.
+Detailed in each application is what I've done. PLEASE DO iOS development first and deploy your web app FIRST. Android local development is a pain in the bum... Just trust me and you can ignore some of those aforementioned weird XML stuff and just use your regular domain.
 
 ---
 ### Why use JWT?
@@ -30,16 +30,19 @@ Those are some basics and only SOME of the vulnerabilities that any server shoul
 
 A default user with the username `test` and password `test` have been created.
 
+**When going into production, you'll want to change the urls in the code obviously. For Android, there are specific instructions on configuration for BOTH local and production.**
+
 ---
 ### Technical Details
 
 - Django 3.0.3 and DRF 3.11.0 + SimpleJWT 4.4.0
 - Swift 5.1 for development
-- TODO Android
+- Android MinSDK 22 Target 29 Kotin 1.3.70
 
 ---
 ### License
 
+```
 Copyright 2020 Andrew Chen Wang
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,3 +56,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+```

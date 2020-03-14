@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     let label = UILabel()
     var pingCount = 0
     
+    // Necessary so we stop infinitely pinging when sign out. In production, please never do an infinite request like this...
+    var inView: Bool = false
+    
     var networkManager: AuthNetworkManager!
     init(networkManager: AuthNetworkManager) {
         super.init(nibName: nil, bundle: nil)
@@ -33,6 +36,7 @@ class ViewController: UIViewController {
         ])
         
         // Begining async calling to check if expired or not
+        inView = true
         testLogin()
     }
     
@@ -41,12 +45,18 @@ class ViewController: UIViewController {
         label.text = "Number of pings: \(pingCount)"
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        inView = false
+    }
+    
     /// Test login against server every second
     func testLogin() {
         // Required
         let group = DispatchGroup()
         group.enter()
         var authError = false
+        // The simulation may "lag" but it's really just this one second delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             // Perform ping test. Replace with whatever network thing you need to perform.
             self.networkManager.ping(id: 10) { response, error in
@@ -69,7 +79,9 @@ class ViewController: UIViewController {
             // This is where you do your stuff. DO NOT do it in that DispatchQueue since all your UI actions need to happen on the main thread. So replace updatePingCount() with whatever you need to do.
             self.updatePingCount()
             // Re-run ping function to shoe how automatic Auth Works.
-            self.testLogin()
+            if self.inView == true {
+                self.testLogin()
+            }
         }
     }
 }

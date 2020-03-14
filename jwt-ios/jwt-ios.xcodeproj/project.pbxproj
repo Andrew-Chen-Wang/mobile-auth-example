@@ -27,7 +27,7 @@
 		EC52AA6A240E1596001E14AF /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA69240E1596001E14AF /* KeychainItemAccessibility.swift */; };
 		EC52AA6C240EEE35001E14AF /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA6B240EEE35001E14AF /* NetworkResponse.swift */; };
 		EC52AA6E240EEEDA001E14AF /* AuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA6D240EEEDA001E14AF /* AuthNetworkManager.swift */; };
-		EC52AA70240EF2F5001E14AF /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA6F240EF2F5001E14AF /* AuthModel.swift */; };
+		EC52AA70240EF2F5001E14AF /* AuthApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA6F240EF2F5001E14AF /* AuthApiResponse.swift */; };
 		EC52AA77240F3D50001E14AF /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA76240F3D50001E14AF /* NetworkEnvironment.swift */; };
 		EC80E4112411932E00B94A6F /* QuickAuthenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC80E4102411932E00B94A6F /* QuickAuthenticate.swift */; };
 /* End PBXBuildFile section */
@@ -55,7 +55,7 @@
 		EC52AA69240E1596001E14AF /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		EC52AA6B240EEE35001E14AF /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		EC52AA6D240EEEDA001E14AF /* AuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworkManager.swift; sourceTree = "<group>"; };
-		EC52AA6F240EF2F5001E14AF /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		EC52AA6F240EF2F5001E14AF /* AuthApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApiResponse.swift; sourceTree = "<group>"; };
 		EC52AA76240F3D50001E14AF /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
 		EC80E4102411932E00B94A6F /* QuickAuthenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAuthenticate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,7 +158,7 @@
 		EC52AA5E240DCC0E001E14AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EC52AA6F240EF2F5001E14AF /* AuthModel.swift */,
+				EC52AA6F240EF2F5001E14AF /* AuthApiResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -261,7 +261,7 @@
 				EC52AA2C240D9D4B001E14AF /* AppDelegate.swift in Sources */,
 				EC52AA57240DC99E001E14AF /* NetworkLogger.swift in Sources */,
 				EC52AA5B240DC9C9001E14AF /* Router.swift in Sources */,
-				EC52AA70240EF2F5001E14AF /* AuthModel.swift in Sources */,
+				EC52AA70240EF2F5001E14AF /* AuthApiResponse.swift in Sources */,
 				EC52AA66240E12C1001E14AF /* Authentication.swift in Sources */,
 				EC80E4112411932E00B94A6F /* QuickAuthenticate.swift in Sources */,
 				EC52AA6E240EEEDA001E14AF /* AuthNetworkManager.swift in Sources */,

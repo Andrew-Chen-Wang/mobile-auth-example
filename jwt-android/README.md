@@ -4,9 +4,30 @@ The Android version acts the same way as the iOS version.
 
 Please keep in mind these are my first projects on Swift and Android, so if there are code design or architecture flaws, issue it on GH.
 
+### Important Adjustments
+
+Because I despise Android development, I didn't follow any architectural rules. The networking is a bit wonky with a bunch of XML values that I had to add for local development.
+
+What you need to do is go to `server/server/settings.py` and change `192.168.0.8` to your private IP address.
+- You can find it out by typing `ifconfig` for Linux or MacOS or `ipconfig` on Windows in your terminal/cmd
+
+The values I've added in Android's manifest:
+- android:networkSecurityConfig="@xml/network_security_config"
+    - You should also delete that XML file, as well, when going into production
+- This monstrosity:
+```
+<service android:name="com.andrewcwang.jwtauth.GenericAccountService">
+    <intent-filter>
+        <action android:name="android.accounts.AccountAuthenticator" />
+    </intent-filter>
+    <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator" />
+</service>
+```
+You should just use Firebase or Google's Suggested Smart Lock. I'm using this for convenience and because Google can't make up their minds with how to run the show... Too many options makes me confused...
+
 ### Tech stack
 
-- Android: minSdkVersion 21, Target 29 using Kotlin 1.3.70
+- Android: minSdkVersion 22, Target 29 using Kotlin 1.3.70
 - Retrofit 2.7.2 + Moshi Retrofit Converter
 - Kotlin Moshi 1.9.2 (I used Moshi after analyzing previous experiences online including top contributors of Gson + Moshi. Moshi, in the long run, is the way to go for any app, Kotlin or Java heavy, as you scale up)
 - OkHTTP Logging Interceptor 4.2.2
@@ -15,7 +36,7 @@ Please keep in mind these are my first projects on Swift and Android, so if ther
 
 The Android version acts the same way as the iOS version.
 
-I'm following Google's GOD rule for one-activity-multiple-fragment architecture since the latest Android JetPack and Navigation components really help out.
+I'm following Google's GOD rule for one-activity-multiple-fragment architecture.
 
 When a user needs to log in again, since I'm using the one activity multiple fragment methodology, the fragment calls the activity method for logging in again. To know when this happens, unwrap the `Response`.
 
@@ -26,6 +47,8 @@ It's also worth mentioning that the networking acts a little differently in Andr
 I'll be using Kotlin 1.3.70 since it's close to Swift syntax.
 
 ### Extra Notes
+
+PLEASE DO iOS development first and deploy your web app FIRST. Android local development is a pain in the bum... Just trust me and you can ignore some of those aforementioned weird XML stuff and just use your regular domain.
 
 What I like about Android development being slightly proficient in Swift now is that Kotlin's syntax is closely related to Swift's. Additionally, I've worked with JetBrain products before and their autocomplete feature on here is amazing when it comes to imports.
 

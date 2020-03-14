@@ -50,7 +50,6 @@ extension AuthAPI: EndPointType {
             // Authentication does not need Bearer token for authentication
             return nil
         default:
-            print("HEY! GASDKHILUFBKHUILBJDKGVBJDGVBUKYABWDWAFBKJHB")
             return ["Authorization": "Bearer \(getAuthToken(.access))"]
         }
     }
@@ -102,12 +101,12 @@ extension AuthAPI: EndPointType {
                 urlParameters: nil
             )
         case .ping(let id):
-            return .requestParametersAndHeaders(
+            return .requestParameters(
                 bodyParameters: nil,
                 bodyEncoding: .urlEncoding,
                 urlParameters: [
                     "id": id
-                ], additionHeaders: ["Authorization": "Bearer \(getAuthToken(.access))"]
+                ]
             )
         default:
             return .request

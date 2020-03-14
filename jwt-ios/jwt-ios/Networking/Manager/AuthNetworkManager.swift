@@ -11,14 +11,15 @@ import Foundation
 struct AuthNetworkManager {
     static let environment: NetworkEnvironment = .local
     let router = Router<AuthAPI>()
-    
+    let networkConnErrorMsg = "Please check your network connection."
+
     // MARK: Request Functions
     
     func access(completion: @escaping (_ auth: AuthApiResponse?, _ error: String?) -> ()) {
         router.request(.access) { data, response, error in
             
             if error != nil {
-                completion(nil, "Please check your network connection.")
+                completion(nil, self.networkConnErrorMsg)
             }
             
             if let response = response as? HTTPURLResponse {
@@ -30,6 +31,7 @@ struct AuthNetworkManager {
                         return
                     }
                     do {
+                        // IMPORTANT. You can change that AuthApiResponse to whatever you want so you don't clutter all your responses in one struct
                         print(responseData)
                         let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
                         print(jsonData)
@@ -53,7 +55,7 @@ struct AuthNetworkManager {
         router.request(.both) { data, response, error in
             
             if error != nil {
-                completion(nil, "Please check your network connection.")
+                completion(nil, self.networkConnErrorMsg)
             }
             
             if let response = response as? HTTPURLResponse {
@@ -88,7 +90,7 @@ struct AuthNetworkManager {
         router.request(.ping(id: id)) { data, response, error in
             
             if error != nil {
-                completion(nil, "Please check your network connection.")
+                completion(nil, self.networkConnErrorMsg)
             }
             
             if let response = response as? HTTPURLResponse {
