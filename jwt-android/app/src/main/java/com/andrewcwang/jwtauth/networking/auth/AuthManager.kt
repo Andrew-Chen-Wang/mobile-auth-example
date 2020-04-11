@@ -43,7 +43,7 @@ class AuthManager private constructor(context: Context): AccessTokenProvider {
         runBlocking {
             val body = Login(
                     username = currentAccount?.name!!,
-                    password = accountManager.getPassword(currentAccount)
+                    password = accountManager.getPassword(currentAccount!!)
             )
             val postRequest = async { service.login(credentials = body) }
             val req = postRequest.await()
@@ -53,6 +53,9 @@ class AuthManager private constructor(context: Context): AccessTokenProvider {
                 refreshToken = refresh
                 newToken = access
             } else if (req.code() == 401) {
+                accessToken = null
+                refreshToken = null
+                currentAccount = null
                 accountManager.removeAccountExplicitly(currentAccount)
             }
         }

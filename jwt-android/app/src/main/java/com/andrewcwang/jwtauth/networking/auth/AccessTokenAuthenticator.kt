@@ -1,5 +1,6 @@
 package com.andrewcwang.jwtauth.networking.auth
 
+import android.util.Log
 import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
@@ -19,7 +20,6 @@ class AccessTokenAuthenticator(
     // Only used if we get a status code 401, unauthorized.
     // Could happen if login failed or token expired.
     override fun authenticate(route: Route?, response: Response): Request? {
-        // We need to have a token in order to refresh it.
         val token = tokenProvider.token() ?: return null
 
         synchronized(this) {
@@ -29,33 +29,27 @@ class AccessTokenAuthenticator(
             // Check is for just in case other request just changed the access token
             if (response.request.header("Authorization") == null) {
                 // Basically logging in to get new tokens
-                val newAccessToken = tokenProvider.newTokens()
                 return response.request
                         .newBuilder()
-                        .removeHeader("Authorization")
-                        .addHeader("Authorization", "Bearer $newAccessToken")
+                        .addHeader("Authorization", "Bearer ${tokenProvider.newTokens()}")
                         .build()
             } else {
-
-                // If the token has changed since the request was made, use the new token.
-                if (newToken != token) {
+                if (token != newToken) {
                     return response.request
                             .newBuilder()
                             .removeHeader("Authorization")
-                            .addHeader("Authorization", "Bearer $newToken")
+                            .addHeader("Authorization", "Bearer ${tokenProvider.token()}")
                             .build()
                 }
 
-                val updatedAccessToken = tokenProvider.refreshToken() ?: return null
-
+                // Refresh the Access token.
                 // Retry the request with the new token.
                 return response.request
                         .newBuilder()
                         .removeHeader("Authorization")
-                        .addHeader("Authorization", "Bearer $updatedAccessToken")
+                        .addHeader("Authorization", "Bearer ${tokenProvider.refreshToken()}")
                         .build()
             }
         }
-//        return null
     }
 }
