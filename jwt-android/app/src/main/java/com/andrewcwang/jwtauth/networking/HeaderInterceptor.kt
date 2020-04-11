@@ -19,9 +19,20 @@ internal class HeaderInterceptor(
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val request: Request = chain.request()
-        val newRequest: Request = request.newBuilder()
-                .addHeader("Content-Type", "application/json")
-                .build()
+        // Because Kotlin's so fun, size means index.max, not len()
+        // I didn't bother writing any throw due to the size thing since
+        // pathSegments is always at least size 2 with api/ as the first
+        // index and a blank being the last.
+        val newRequest: Request = if (request.url.pathSegments[request.url.pathSegments.size - 2] in unauthenticatedURLs) {
+            request.newBuilder()
+                    .addHeader("Content-Type", "application/json")
+                    .build()
+        } else {
+            request.newBuilder()
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("Authorization", "Bearer ${authManager.accessToken}")
+                    .build()
+        }
 
         return if (DEBUG) {
             val t1 = System.nanoTime()
