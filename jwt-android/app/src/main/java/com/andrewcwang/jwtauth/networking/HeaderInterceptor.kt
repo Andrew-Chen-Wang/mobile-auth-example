@@ -1,13 +1,16 @@
 package com.andrewcwang.jwtauth.networking
 
 import android.annotation.SuppressLint
+import com.andrewcwang.jwtauth.networking.auth.AuthManager
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.internal.http2.Http2Reader
 import java.io.IOException
 
-internal class HeaderInterceptor : Interceptor {
+internal class HeaderInterceptor(
+        private val authManager: AuthManager
+) : Interceptor {
     private val DEBUG = true
     // Remember, both and access use post requests to get tokens
     private val unauthenticatedURLs: List<String> = listOf("both", "access", "register")
@@ -23,7 +26,7 @@ internal class HeaderInterceptor : Interceptor {
         } else {
             request.newBuilder()
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization", "Bearer ")
+                    .addHeader("Authorization", "Bearer ${authManager.accessToken}")
                     .build()
         }
 

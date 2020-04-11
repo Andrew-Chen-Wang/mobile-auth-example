@@ -8,8 +8,10 @@ Please keep in mind these are my first projects on Swift and Android, so if ther
 
 Because I despise Android development, I didn't follow any architectural rules. The networking is a bit wonky with a bunch of XML values that I had to add for local development.
 
-What you need to do is go to `server/server/settings.py` and change `192.168.0.8` to your private IP address.
+What you need to do is go to `server/server/settings.py` and change `192.168.0.12` to your private IP address.
 - You can find it out by typing `ifconfig` for Linux or MacOS or `ipconfig` on Windows in your terminal/cmd
+
+You also need to go to `res/xml/network_security_config` and for Kotlin `com.andrewcwang.jwtauth.networking.AuthService` and change the IP addresses there too.
 
 The values I've added in Android's manifest:
 - android:networkSecurityConfig="@xml/network_security_config"

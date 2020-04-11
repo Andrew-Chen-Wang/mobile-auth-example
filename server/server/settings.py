@@ -18,7 +18,7 @@ SECRET_KEY = '3hls$)92@wy0z^lq67@w1a(qzx4*$)pj)_*1$m!h$k#dl(odq&'
 DEBUG = True
 
 # The last one is my private IP address for Android development
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "192.168.0.8"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "192.168.0.12"]
 
 # IMPORTANT STUFF
 # IMPORTANT STUFF

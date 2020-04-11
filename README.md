@@ -30,7 +30,7 @@ Those are some basics and only SOME of the vulnerabilities that any server shoul
 
 A default user with the username `test` and password `test` have been created.
 
-**When going into production, you'll want to change the urls in the code obviously. For Android, there are specific instructions on configuration for BOTH local and production.**
+**When going into production (and testing for android), you'll want to change the urls in the code obviously. For Android, there are specific instructions on configuration for BOTH local and production.**
 
 ---
 ### Technical Details

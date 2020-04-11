@@ -38,8 +38,6 @@ class LoginFragment: Fragment() {
     private suspend fun login() {
         val username = root.findViewById<EditText>(R.id.login_username)
         val password = root.findViewById<EditText>(R.id.login_password)
-        Toast.makeText(context, "Username: " + username.text, Toast.LENGTH_SHORT).show()
-        Toast.makeText(context, "Password: " + password.text, Toast.LENGTH_SHORT).show()
         val am: AccountManager = AccountManager.get(view?.context)
         val account = Account(username.text.toString(), "com.andrewcwang.jwtauth")
         am.addAccountExplicitly(account, password.text.toString(), Bundle())
