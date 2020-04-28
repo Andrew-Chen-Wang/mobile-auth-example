@@ -24,7 +24,7 @@ class NetworkLogger {
         
         var logOutput = """
                         \(urlAsString) \n\n
-                        \(method) \(path)?\(query) HTTP/1.1 \n
+                        \(method) \(path)\(query != "" ? "?":"")\(query) HTTP/1.1 \n
                         HOST: \(host)\n
                         """
         for (key,value) in request.allHTTPHeaderFields ?? [:] {
