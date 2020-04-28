@@ -35,13 +35,16 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
             cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
             timeoutInterval: 10.0
         )
-        
+        if let headers = route.headers {
+            for (header, value) in headers {
+                request.setValue(value, forHTTPHeaderField: header)
+            }
+        }
+        request.httpShouldHandleCookies = false
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = route.httpMethod.rawValue
         do {
-            switch route.task {
-            case .request:
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                
+            switch route.task {   
             case .requestParameters(
                 let bodyParameters,
                 let bodyEncoding,
@@ -67,6 +70,8 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
                     urlParameters: urlParameters,
                     request: &request
                 )
+            default:
+                return request
             }
             return request
         } catch {
