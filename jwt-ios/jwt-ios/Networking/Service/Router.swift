@@ -8,25 +8,6 @@
 
 import UIKit
 
-fileprivate struct AuthError<EndPoint: EndPointType> {
-    func handleAuthError(_ route: EndPoint,_ originalTask: HTTPTask?) {
-        if route.path == AuthAPI.access.path {
-            // We have to try refreshing
-            AuthNetworkManager().access() { response, error in
-                if error != nil {
-                    // Refresh token is expired?
-                } else {
-                    print()
-                }
-            }
-        } else if route.path == AuthAPI.both.path {
-            // We must sign out
-        } else {
-            // This is just a new way endpoint that must be get a new token.
-        }
-    }
-}
-
 class Router<EndPoint: EndPointType>: NetworkRouter {
     private var task: URLSessionTask?
     
@@ -54,7 +35,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
                                             switch bothError {
                                             case NetworkResponse.authenticationError.rawValue:
                                                 DispatchQueue.main.async {
-                                                    UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.navigationController?.signout()
+                                                    (UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController as! UINavigationController).signout()
                                                 }
                                             default:
                                                 completion(data, response, error)
