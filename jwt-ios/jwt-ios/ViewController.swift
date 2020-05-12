@@ -46,6 +46,7 @@ class ViewController: UIViewController {
     /// Test login against server every second
     func testLogin() {
         // Required for UI changing
+        // You can also do DispatchQueue.main.async instead of a DispatchGroup to perform UI API methods. Notable in Router.swift
         let group = DispatchGroup()
         group.enter()
         // The simulation may "lag" but it's really just this one second delay
