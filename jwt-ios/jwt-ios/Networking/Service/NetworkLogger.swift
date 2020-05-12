@@ -19,12 +19,12 @@ class NetworkLogger {
         
         let method = request.httpMethod != nil ? "\(request.httpMethod ?? "")" : ""
         let path = "\(urlComponents?.path ?? "")"
-        let query = "\(urlComponents?.query ?? "")"
+        let query = "\(urlComponents?.query ?? "" == "" ? "":"?")\(urlComponents?.query ?? "")"
         let host = "\(urlComponents?.host ?? "")"
         
         var logOutput = """
                         \(urlAsString) \n\n
-                        \(method) \(path)?\(query) HTTP/1.1 \n
+                        \(method) \(path)\(query) HTTP/1.1 \n
                         HOST: \(host)\n
                         """
         for (key,value) in request.allHTTPHeaderFields ?? [:] {
