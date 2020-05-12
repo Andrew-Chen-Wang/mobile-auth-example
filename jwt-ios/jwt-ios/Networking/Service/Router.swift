@@ -6,7 +6,26 @@
 //  Copyright © 2020 Andrew Chen Wang. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+fileprivate struct AuthError<EndPoint: EndPointType> {
+    func handleAuthError(_ route: EndPoint,_ originalTask: HTTPTask?) {
+        if route.path == AuthAPI.access.path {
+            // We have to try refreshing
+            AuthNetworkManager().access() { response, error in
+                if error != nil {
+                    // Refresh token is expired?
+                } else {
+                    print()
+                }
+            }
+        } else if route.path == AuthAPI.both.path {
+            // We must sign out
+        } else {
+            // This is just a new way endpoint that must be get a new token.
+        }
+    }
+}
 
 class Router<EndPoint: EndPointType>: NetworkRouter {
     private var task: URLSessionTask?
@@ -17,7 +36,40 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
             let request = try self.buildRequest(from: route)
             NetworkLogger.log(request: request)
             task = session.dataTask(with: request, completionHandler: { data, response, error in
-                completion(data, response, error)
+                // Handle intercepting
+                if let response = response as? HTTPURLResponse {
+                    let result = handleNetworkResponse(response)
+                    switch result {
+                    case .success:
+                        completion(data, response, error)
+                    case .failure(let networkResponseError):
+                        if networkResponseError == NetworkResponse.authenticationError.rawValue && ![AuthAPI.access.path, AuthAPI.both.path].contains(route.path) {
+                            // This combines both the refreshing and getting both new tokens
+                            AuthNetworkManager().access() { _, accessError in
+                                if accessError == nil {
+                                    self.request(route, completion: completion)
+                                } else {
+                                    AuthNetworkManager().both() { _, bothError in
+                                        if let bothError = bothError {
+                                            switch bothError {
+                                            case NetworkResponse.authenticationError.rawValue:
+                                                DispatchQueue.main.async {
+                                                    UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.navigationController?.signout()
+                                                }
+                                            default:
+                                                completion(data, response, error)
+                                            }
+                                        } else {
+                                            self.request(route, completion: completion)
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            completion(data, response, error)
+                        }
+                    }
+                }
             })
         } catch {
             completion(nil, nil, error)
@@ -35,7 +87,11 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
             cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
             timeoutInterval: 10.0
         )
-        
+        if let headers = route.headers {
+            for (header, value) in headers {
+                request.setValue(value, forHTTPHeaderField: header)
+            }
+        }
         request.httpMethod = route.httpMethod.rawValue
         do {
             switch route.task {

@@ -30,6 +30,7 @@
 		EC52AA70240EF2F5001E14AF /* AuthApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA6F240EF2F5001E14AF /* AuthApiResponse.swift */; };
 		EC52AA77240F3D50001E14AF /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC52AA76240F3D50001E14AF /* NetworkEnvironment.swift */; };
 		EC80E4112411932E00B94A6F /* QuickAuthenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC80E4102411932E00B94A6F /* QuickAuthenticate.swift */; };
+		ECEEA313246A121A005812BF /* PingApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEEA312246A121A005812BF /* PingApiResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		EC52AA6F240EF2F5001E14AF /* AuthApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApiResponse.swift; sourceTree = "<group>"; };
 		EC52AA76240F3D50001E14AF /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
 		EC80E4102411932E00B94A6F /* QuickAuthenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAuthenticate.swift; sourceTree = "<group>"; };
+		ECEEA312246A121A005812BF /* PingApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingApiResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				EC52AA6F240EF2F5001E14AF /* AuthApiResponse.swift */,
+				ECEEA312246A121A005812BF /* PingApiResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				EC52AA5B240DC9C9001E14AF /* Router.swift in Sources */,
 				EC52AA70240EF2F5001E14AF /* AuthApiResponse.swift in Sources */,
 				EC52AA66240E12C1001E14AF /* Authentication.swift in Sources */,
+				ECEEA313246A121A005812BF /* PingApiResponse.swift in Sources */,
 				EC80E4112411932E00B94A6F /* QuickAuthenticate.swift in Sources */,
 				EC52AA6E240EEEDA001E14AF /* AuthNetworkManager.swift in Sources */,
 			);

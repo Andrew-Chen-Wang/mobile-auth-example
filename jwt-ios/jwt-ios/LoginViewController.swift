@@ -12,13 +12,6 @@ class LoginViewController: UIViewController {
     let usernameField = UITextField()
     let passwordField = UITextField()
     let submitButton = UIButton()
-    
-    var networkManager: AuthNetworkManager!
-    init(networkManager: AuthNetworkManager) {
-        super.init(nibName: nil, bundle: nil)
-        self.networkManager = networkManager
-    }
-    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,13 +60,13 @@ class LoginViewController: UIViewController {
     
     @objc func login(sender: UIButton!) {
         saveUserCredentials(username: usernameField.text ?? "", password: passwordField.text ?? "")
-        networkManager.both() { response, error in
+        AuthNetworkManager().both() { response, error in
             if let error = error {
                 print(error)
             } else {
                 DispatchQueue.main.async {
                     // Pass the network manager so that we don't keep instantiating it.
-                    self.navigationController?.pushViewController(ViewController(networkManager: self.networkManager), animated: true)
+                    self.navigationController?.pushViewController(ViewController(), animated: true)
                 }
             }
         }

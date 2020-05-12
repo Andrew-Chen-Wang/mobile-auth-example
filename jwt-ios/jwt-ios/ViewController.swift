@@ -15,13 +15,6 @@ class ViewController: UIViewController {
     // Necessary so we stop infinitely pinging when sign out. In production, please never do an infinite request like this...
     var inView: Bool = false
     
-    var networkManager: AuthNetworkManager!
-    init(networkManager: AuthNetworkManager) {
-        super.init(nibName: nil, bundle: nil)
-        self.networkManager = networkManager
-    }
-    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -52,30 +45,21 @@ class ViewController: UIViewController {
     
     /// Test login against server every second
     func testLogin() {
-        // Required
+        // Required for UI changing
         let group = DispatchGroup()
         group.enter()
-        var authError = false
         // The simulation may "lag" but it's really just this one second delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             // Perform ping test. Replace with whatever network thing you need to perform.
-            self.networkManager.ping(id: 10) { response, error in
+            AuthNetworkManager().ping(id: 10) { response, error in
                 if let error = error {
                     print(error)
-                    // Required
-                    if error == NetworkResponse.authenticationError.rawValue {
-                        authError = true
-                    }
                 }
                 group.leave()
             }
         })
         
         group.notify(queue: .main) {
-            // Required if statement
-            if authError {
-            self.navigationController?.getNewAccessToken(self.networkManager)
-            }
             // This is where you do your stuff. DO NOT do it in that DispatchQueue since all your UI actions need to happen on the main thread. So replace updatePingCount() with whatever you need to do.
             self.updatePingCount()
             // Re-run ping function to shoe how automatic Auth Works.

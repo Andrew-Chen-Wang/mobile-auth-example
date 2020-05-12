@@ -37,7 +37,7 @@ struct AuthNetworkManager {
                         print(jsonData)
                         let apiResponse = try JSONDecoder().decode(AuthApiResponse.self, from: responseData)
                         print(apiResponse)
-                        saveAuthToken(.access, apiResponse.access!)
+                        saveAuthToken(.access, apiResponse.access)
                         completion(nil, nil)
                     } catch {
                         print(error)
@@ -71,7 +71,7 @@ struct AuthNetworkManager {
                         let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
                         print(jsonData)
                         let apiResponse = try JSONDecoder().decode(AuthApiResponse.self, from: responseData)
-                        saveAuthToken(.access, apiResponse.access!)
+                        saveAuthToken(.access, apiResponse.access)
                         saveAuthToken(.refresh, apiResponse.refresh!)
                         completion(nil, nil)
                     } catch {
@@ -86,7 +86,7 @@ struct AuthNetworkManager {
         }
     }
     
-    func ping(id: Int, completion: @escaping (_ auth: AuthApiResponse?, _ error: String?) -> ()) {
+    func ping(id: Int, completion: @escaping (_ auth: PingApiResponse?, _ error: String?) -> ()) {
         router.request(.ping(id: id)) { data, response, error in
             
             if error != nil {
@@ -105,7 +105,7 @@ struct AuthNetworkManager {
                         print(responseData)
                         let jsonData = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers)
                         print(jsonData)
-                        let apiResponse = try JSONDecoder().decode(AuthApiResponse.self, from: responseData)
+                        let apiResponse = try JSONDecoder().decode(PingApiResponse.self, from: responseData)
                         completion(apiResponse, nil)
                     } catch {
                         print(error)
@@ -113,7 +113,6 @@ struct AuthNetworkManager {
                     }
 
                 case .failure(let networkFailureError):
-                    if networkFailureError == NetworkResponse.authenticationError.rawValue {}
                     completion(nil, networkFailureError)
                 }
             }
