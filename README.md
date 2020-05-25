@@ -33,6 +33,17 @@ A default user with the username `test` and password `test` have been created.
 **When going into production (and testing for android), you'll want to change the urls in the code obviously. For Android, there are specific instructions on configuration for BOTH local and production.**
 
 ---
+### FAQ
+
+Why am I getting a 403 status code instead of a 401?
+- For some reason, you MUST have the SimpleJWT authentication set first in your iterable in the REST_FRAMEWORK setting, before SessionAuthentication (or whatever other backends you use).
+
+Why the negativity against Android?
+- Deprecations, minSdks, steep learning curve (even for senior devs, it's still hard), outdated SO questions and tutorials, etc.
+- Also, there is this heavy push to have OAuth connection to Google when developing for Android... I'll get a new repo up for those wishing for that kind of integration, but it's one hell of a push by Google.
+- Deprecation. Deprecation. Deprecation. iOS is chill with this since the OS is proprietarily used for iOS only. If you want to put a mood meter for the iOS and Android dev subreddits, you'll see that Android breaks the meter.
+
+---
 ### Technical Details
 
 - Django 3.0.3 and DRF 3.11.0 + SimpleJWT 4.4.0
