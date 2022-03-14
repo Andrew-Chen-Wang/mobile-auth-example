@@ -35,7 +35,14 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
                                             switch bothError {
                                             case NetworkResponse.authenticationError.rawValue:
                                                 DispatchQueue.main.async {
-                                                    (UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController as! UINavigationController).signout()
+                                                    let scenes = UIApplication.shared.connectedScenes
+                                                    let windowScene = scenes.first as? UIWindowScene
+                                                    let window = windowScene?.windows.first
+                                                    if (window?.isKeyWindow) != nil {
+                                                        if window!.isKeyWindow {
+                                                            (window!.rootViewController as! UINavigationController).signout()
+                                                        }
+                                                    }
                                                 }
                                             default:
                                                 completion(data, response, error)
