@@ -50,7 +50,11 @@ interface AuthService {
             val client = OkHttpClient().newBuilder()
                     .authenticator(AccessTokenAuthenticator(authManager))
                     .addInterceptor(HeaderInterceptor(authManager))
-                    .addInterceptor(loggingInterceptor)
+                    .also {
+                        if(BuildConfig.DEBUG) {
+                            it.addInterceptor(loggingInterceptor)
+                        }
+                    }
                     .build()
 
             // Create the service
